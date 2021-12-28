@@ -1,0 +1,9 @@
+// LCM OF a,b
+
+int lcm;
+for(int i=0; i<=a*b;i++){
+	if(i%a==0 and i%b==0){
+		lcm=i;
+		break;	
+	}
+}

@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool setBit( int n, int pos){  //pos pr 1 hai ya nhi
+   return ((n & (1<< pos)) != 0 );
+}
+
+
+void unique( int arr[] , int n){
+   int xorsum = 0;
+   for( int i=0 ; i< n ; i++){ 
+      xorsum  = xorsum ^ arr[i] ; //^ symbol of xor
+   }
+   
+   int temxor =xorsum;
+   int setbit =0;
+   int pos=0;
+   while( setbit !=1){             // for pos of righmost 1 (setbit)
+      setbit = xorsum & 1;     //store last bit of xorsum
+      pos ++;                              //increment pos
+      xorsum = xorsum >>1 ;      //right shift
+   }
+                                                   // yaha pr pos ek extra ho jayega becoz of pos++
+   
+   int newxor = 0;
+   for( int i=0 ; i<n ; i++){  //same pos pr 1 walo ka xor karenge
+      if( setBit( arr[i] , pos-1)){   //pos-1 becoz pos ek extra tha
+         newxor = newxor ^ arr[i];
+      }
+   }
+
+   cout<<newxor<<endl;
+   cout<< (temxor ^ newxor) <<endl;
+}
+
+ int main(){
+    int n;
+    n=8;
+    int arr[8] = {2,4,6,7,4,5,6,2};
+    unique( arr,n);
+
+ }
+
+
+

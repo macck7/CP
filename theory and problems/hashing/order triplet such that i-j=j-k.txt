@@ -1,0 +1,41 @@
+order triplet such that a-b = b-c 
+question link:--https://www.hackerearth.com/problem/algorithm/ordered-triplets/
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 1e5+10;
+const int A_Limit = 1e3+7;
+const int M = 1e9+7;
+int a[N];
+int hsh[A_Limit];
+ 
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;++i){
+        cin>>a[i];
+        hsh[a[i]]++;
+    }
+    int ai , aj,ak; long long int counts=0;
+    for(ai=1;ai<A_Limit;++ai){
+        if(hsh[ai]==0) continue;
+        long long int ai_ct = hsh[ai]--;
+        for(int aj=1;aj<A_Limit;++aj){
+            if(hsh[aj]==0) continue;
+            long long int aj_ct = hsh[aj]--;
+            int ai_aj = abs(ai-aj);
+            int ak1=aj-ai_aj;
+            int ak2=aj+ai_aj;
+            if(ak1==ak2&&ak1>0&&ak1<A_Limit){
+                counts+=(ai_ct*aj_ct*hsh[ak1])%M;
+            }else{
+                if(ak1>0&&ak1<A_Limit) counts+=(ai_ct*aj_ct*hsh[ak1])%M;
+                if(ak2>0&&ak2<A_Limit) counts+=(ai_ct*aj_ct*hsh[ak2])%M;
+            }
+    counts%=M;
+    hsh[aj]++;
+        }
+    hsh[ai]++;
+    }
+    cout<<counts;   
+}

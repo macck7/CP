@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+//wave sort m element k dono taraf wale bade hone chahiye like a wave
+void DNFsort( int arr[], int n){
+	int low=0, mid=0, high= n-1 ;	
+
+	while(mid<=high){
+		if(arr[mid]==1){
+			mid++;
+		}
+		else if( arr[mid] ==0){
+			swap( arr[mid] ,arr[low]);
+			mid++;
+			low++;
+		}
+		else{
+			swap(arr[mid] ,arr[high]);
+			high--;
+		}
+	}
+}
+
+
+
+int main(){
+	int n;
+	cin>>n;
+	int arr[n];
+	for( int i= 0 ; i<n ; i++){
+		cin>>arr[i];
+	}
+
+	DNFsort( arr,n);
+
+	for( auto &a : arr){
+		cout<<a<<" ";
+	}
+}
+
+i/p
+16
+0 2 1 0 2 1 0 2 1 0 1 2 1 0 1 2
+
+o/p
+0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 

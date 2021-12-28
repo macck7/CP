@@ -1,0 +1,52 @@
+in longest length palidrome we take each charater with odd count-1 plus last mwe 1 add krde.
+QUESTION LINK:https://www.hackerearth.com/problem/algorithm/help-joe/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N=26;
+int hsh[N];
+/*
+1=|S|=10000
+
+1=q=10000
+
+1=N=26
+*/
+int main(){
+	string s;
+	cin>>s;
+	for(int i=0;i<s.size();i++){
+		hsh[s[i]-'a']++;
+	}
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		int max=0,count=0;
+		char arr[n];
+		int newarr[26];
+		for(int i=0;i<26;i++){                                          //ARRAY TO REMOVE REPLITITION
+			newarr[i]=1;
+		}
+		bool flag=false;	
+		for(int i=0;i<n;i++){
+			cin>>arr[i];
+			if(newarr[arr[i]-'a']==1){
+			if(hsh[arr[i]-'a']%2==0){
+				count+=hsh[arr[i]-'a'];
+			}
+			else{
+				count+=hsh[arr[i]-'a']-1;
+				flag=true;
+			}
+			newarr[arr[i]-'a']=0;
+		}
+
+		}
+		if(flag==true) cout<<count+1<<endl;
+		else cout<<count<<endl;
+	}
+}

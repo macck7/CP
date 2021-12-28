@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void subsequences( string s ,string ans){
+   if(s.length()==0){
+      cout<<ans<<endl;
+      return;
+   }
+
+   char ch = s[0];
+   int code = ch;
+   string ros=s.substr(1);
+
+   subsequences( ros ,ans);                                    //ch ko nhi le rhe hai
+   subsequences( ros, ans+ ch );                           //ch ko le rhe hai
+   subsequences( ros, ans+to_string(code));       //IT IS USED TO PRINT ASCII values
+   
+}
+
+int main(){
+   
+   string ans="";
+   subsequences("AB",ans);     //ans is use to stroe ans
+}
+
+
+
+
+B
+66
+A
+AB
+A66
+65
+65B
+6566

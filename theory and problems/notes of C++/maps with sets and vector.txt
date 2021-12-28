@@ -1,0 +1,107 @@
+important question: (QUESTION K HISAB SE HUM SELECT KRTE HAI KYA LENA HAI)
+------------------------
+link :https://www.hackerearth.com/problem/algorithm/the-monk-and-class-marks/
+
+i/P
+3
+Eve 78
+Bob 99
+Alice 78
+
+O/P
+Bob 99
+Alice 78
+Eve 78
+	
+
+MAP WITH MULTSETS - (More easier than with vectors) //BECOZ AGAR SET USE KARENGE TO name same nhi ho skte
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+int main(){
+
+	map<int,multiset<string> >m;
+	int n;
+	cin >>n;
+	while(n--){
+		string fn;
+		int ct;
+		cin>>fn>>ct;
+		m[ct].insert(fn);
+
+		}
+		for(auto i=--m.end();;i--){
+			auto a=i->first;
+			auto b=i->second;
+			for(auto &u :b){
+				cout<<u<<" "<<a<<endl;
+			}
+			if(i==m.begin()) break;
+		}
+	}
+
+	
+
+code aur  cota krna :-----------
+-----------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+int main(){
+
+	map<int,multiset<string> >m;
+	int n;
+	cin >>n;
+	while(n--){
+		string fn;
+		int ct;
+		cin>>fn>>ct;
+		m[-ct].insert(fn);
+
+		}
+		for(auto &i:m){                                                          //Taki m.begin() aur m.end() ka use na krna pade ct ki Jagah -ct
+			auto &a=i.first;
+			auto b=i.second;
+			for(auto &u :b){
+				cout<<u<<" "<<-a<<endl;      //output m -a 
+			}
+	
+		}
+	}
+
+		
+
+MAP WITH VECTOR-
+-------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+	int n,old=0;
+	cin >>n;
+
+	map<int,vector<string>>m;
+	for(int i=0;i<n;i++){
+		int a;
+		string r;
+		cin >>r>>a;
+		m[a].push_back(r);
+	}
+	
+	for(auto it = --m.end();; it--) {
+		vector<string> names = (*it).second;
+		sort(names.begin(), names.end());
+		for(int i = 0; i < names.size(); i++) {
+			cout << names[i] << " " << (*it).first << "\n";
+		}
+ 
+		if(it == m.begin()) break;
+	}
+
+}

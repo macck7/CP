@@ -1,0 +1,5 @@
+auto i = s.end();
+
+OR
+
+auto i= s.end();

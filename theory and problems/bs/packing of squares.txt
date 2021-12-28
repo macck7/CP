@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+using ll=long long;
+ll w,h,n;
+
+
+bool good(ll x){
+	return (x/w)*(x/h)>=n;
+} 
+
+
+int main(){
+	
+	cin>>w>>h>>n;
+
+	ll l=0;   // l is good 
+	ll r= 1;  // h is bad we need find min value for which h is bad
+
+	while(!(good(r))) r*=2;
+
+	while(r-l>1){
+		ll m = (l+r)/2;
+		if(good(m)){
+			r=m;
+		}
+		else{
+			l=m;
+		}
+		
+	}cout<<r;
+}
+
+
+i/p
+2 3 10
+
+o/p
+9

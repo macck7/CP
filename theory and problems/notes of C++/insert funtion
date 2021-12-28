@@ -1,0 +1,22 @@
+vector<int> createTargetArray(vector<int>& nums, vector<int>& index) 
+    {
+        vector<int> result;
+        for(int i=0;i<index.size();++i)
+            result.insert(result.begin()+index[i],nums[i]);
+        return result;
+    }
+		
+		
+		std::vector::insert() is a built-in function in C++ STL which inserts new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted.
+
+    Syntax:
+
+    vector_name.insert (position, val)
+
+
+    position – It specifies the iterator which points to the position where the insertion is to be done.
+    val – It specifies the value to be inserted.
+
+Return value: The function returns an iterator which points to the newly inserted element.
+
+also agar phle se koi hai, to 1-1 move kr dega age.

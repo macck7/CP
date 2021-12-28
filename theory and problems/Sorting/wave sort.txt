@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+//wave sort m element k dono taraf wale bade hone chahiye like a wave
+void wave_sort( int arr[], int n){
+	
+	for( int i=1; i<n-1 ; i+=2){
+		//i =1 means staring from second ele. and i+2 means alternate elements
+		if( arr[i-1] < arr[i]){
+			swap( arr[i], arr[i-1]);
+		}
+		
+		if( arr[i] > arr[i+1]  and i<=n-2){   //i<=n-2  becoz wo array k bahr na jaye
+			swap(arr[i] ,arr[i+1]);
+		}
+	}
+}
+
+
+int main(){
+	int n;
+	cin>>n;
+	int arr[n];
+	for( int i= 0 ; i<n ; i++){
+		cin>>arr[i];
+	}
+
+	wave_sort( arr,n);
+
+	for( auto &a : arr){
+		cout<<a<<" ";
+	}
+}
+
+i/p 
+7
+3 1 5 2 4 7 8
+
+o/p
+3 1 5 2 7 4 8 

@@ -1,0 +1,22 @@
+STACK --LIFO
+--------
+Syntax : stack<int>s;
+	s.push(x);
+size
+
+funtion :
+1. s. pop()
+2. s.push(x)
+3. s.top()
+4. s.empty()
+
+QUEUE --LIFO:  ///used in graphs
+------------------
+Syntax : queue<string> q;
+	s.push(x);
+
+1. q.psuh(last se)
+2. q.pop(front se)
+3. q.front (start se)
+4. q.empty()
+

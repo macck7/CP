@@ -1,0 +1,19 @@
+to uppercase
+
+
+char upper(char c){
+
+   return 'A'+(c-'a');   // wo letter 'a' se kitna dur hai utna hi 'A'  me add kr denge
+
+}
+
+
+
+to lowercase
+
+
+char lower(char c){
+
+   return 'a'+(c-'A');          // wo letter 'A' se kitna dur hai utna hi 'a'  me add kr denge
+
+}

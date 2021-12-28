@@ -1,0 +1,48 @@
+QUESTION LINK:  https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/ispalin/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e5+10;
+int hsh[N][26];                                               // sare a to z ka hsh array bana rhe
+				// hai N(PURI stirng length k lye)  
+
+int main(){
+	int t;
+	cin >>t;
+	while(t--){
+		int n,b;
+		cin >>n>>b;
+		string s;
+		cin >>s;
+		for(int i=1;i<=n;i++){
+			for(int j=0;j<26;j++){
+				hsh[i][j]=0;                     //intialising to 0 whole 2D array
+			}
+		}
+
+
+		for(int i=0;i<n;i++){
+			hsh[i+1][s[i]-'a']++;                       // hashing kr rhe hai 'a' ki 0th, 'b' ki 1th...  {1 index m convert k lye i+1}
+		}				// count kr rhe hai a kis kis index pr aya 
+								//waha increment karenge
+		for(int i=0;i<26;i++){
+			for(int j=1;j<=n;j++){
+				hsh[j][i]+=hsh[j-1][i];                                    //prefix sum stroe krne k lye [ hum char k lye]
+			}
+		}
+		while(b--){
+			int l,r;
+			cin >>l>>r;
+			int oddcount=0;
+			for(int i=0;i<26;i++){
+				int charcount=hsh[r][i]-hsh[l-1][i];      // searhing for count of that char in whole string
+				if(charcount%2!=0) oddcount++;       //if count is odd then increment num. of odd counted characters
+			}
+			if(oddcount>1) cout <<"NO"<<endl;
+			else cout<<"YES"<<endl;
+
+		}
+	}
+
+}

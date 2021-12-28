@@ -1,0 +1,138 @@
+inbuilt sort()  funtion : use intosort (mixture of quick,heap,insertion sort)
+TC : O(nlogn)
+
+IN case of Array:
+-----------------------
+sort(a, a+n);
+
+a     = starting address of array
+a+n = is index of next element after last one.
+
+IN case of Vector:
+-----------------------
+sort(a.begin(), a.end());
+
+a.begin()     = starting address of vector
+a.end() = is index of next element after last one.
+
+we can give:
+Ex:   sort(a.begin()+2, a.end())
+====================================================================================
+
+COMPARATOR FUNTION:
+--------------------------------------
+
+In inbuilt sort funtion, we can change behaviour of sort funion by just passing THIRD parameter a fintion
+which define what to do. 
+
+Ex: sort( a, a+n , comp)
+
+// in case of pair:
+-------------------
+Jis order m chahiye wahi return krde 
+Ex: agar first k acc. ascending order soo 
+	retrun a.first < b.first;
+
+agar second k acc. descending order m to
+	return a.second  > b.second
+
+in case of Integers:
+------------------------
+
+bool comp( int a, int b){
+	return a>b ;  // for descending order
+		   // return a<b; for ascending order.
+} 
+
+fuction : sort(a,a+n,comp);
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Example for pairs: with sort and comaparator funtion
+                              -----------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+// in case of vetor(ascending acc. to first , descending acc. to second)
+bool should_i_swap(pair <int,int> a, pair<int,int> b){
+	if(a.first != b.first){
+		return a.first < b.first;       //acending
+	}
+	else return a.second > b.second;        //decending
+		
+	
+}		
+
+
+int main(){
+	int n;
+	cin >> n;
+	vector< pair <int, int > > a(n);
+	for(int i=0 ; i<n ; ++i){
+		cin >>a[i].first >> a[i].second;
+	}
+	sort(a.begin(),a.end(),should_i_swap);
+
+	for(int i=0 ; i<n ; ++i){
+		cout <<a[i].first <<" "<< a[i].second<<endl;
+	}
+}
+
+
+===========================================================
+WITH normal funtion:
+--------------------------------
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+// in case of vetor(ascending acc. to first , descending acc. to second)
+bool should_i_swap(pair <int,int> a, pair<int,int> b){
+	if(a.first != b.first){
+		return a.first > b.first;
+	}
+	else return a.second < b.second;
+		
+	
+}		
+
+
+
+int main(){
+	int n;
+	cin >> n;
+	vector< pair <int, int > > a(n);
+	for(int i=0 ; i<n ; ++i){
+		cin >>a[i].first >> a[i].second;
+	}
+
+	for(int i=0 ; i<n ; ++i){
+		for(int j=i+1; j<n;j++){
+			if(should_i_swap(a[i],a[j])){
+				swap(a[i],a[j]);
+			}
+		}
+	}
+		for(int i=0 ; i<n ; ++i){
+		cout <<a[i].first <<" "<< a[i].second<<endl;
+	}
+}
+------------------------
+i/p:
+6
+4 3
+5 5
+5 3
+25 6
+7 9
+8 5
+
+o/p:
+4 3
+5 5
+5 3
+7 9
+8 5
+25 6

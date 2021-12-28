@@ -1,0 +1,40 @@
+int solve(string s, int k){
+    
+        int ct=0;
+        map<char,int>mp;
+        int i=0;
+        int j=0;
+        while(j<s.size()){
+            mp[s[j]]++;
+            
+            if(mp.size()<k){
+                j++;
+            }
+            else if(mp.size()==k){
+                ct= max( ct, j-i+1);
+                j++;
+            }
+            else if(mp.size()>k){
+                while(mp.size()>k){
+                    mp[s[i]]--;
+                    if(mp[s[i]]==0){
+                        mp.erase(s[i]);
+                    }
+                    i++;
+                }
+                j++;
+            }
+    
+        }
+        if(ct!=0) return ct;
+        else  return -1;
+    }
+
+
+i/p   
+aabacbebebe
+3
+aaaa
+1
+
+o/p  7     4

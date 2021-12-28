@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void towerofhanoi( int n, char src , char dest , char helper){
+
+   if(n==0){
+      return;
+   }
+
+   towerofhanoi( n-1 , src , helper , dest);        //move n-1 disk from source to helper
+   cout<<" move from "<<src<<" to "<<dest <<endl;  // move 1(last) from source to destination
+   towerofhanoi( n-1 , helper ,dest , src);       //move first n-1 blocks from helper to destination
+}
+
+int main(){
+   towerofhanoi( 3 , 'A','C' ,'B');
+}

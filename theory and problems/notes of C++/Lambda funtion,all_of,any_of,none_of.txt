@@ -1,0 +1,59 @@
+ Lambda funtion
+
+Syntax:[](){ ;}
+ 
+  [ ] ( int x ) { return x+2 ; } ( 2 );
+ --------------------------------  ------
+     funtion                           parameter
+
+ex:
+1.  cout <<[](int x){ return x+2 ;}(4)<<endl;
+
+2. cout <<[](int x,int y){ return x+y ;}(4,13)<<endl;
+
+
+Assign value of Lambda funtion:
+---------------------------------------------
+
+int main(){
+
+  auto sum =[](int x,int y){ return x+y ;};
+
+  cout << sum(2,8);
+
+}
+
+BASIC FUNTION :
+--------------------------
+funtion ki jagah Lambda funtion likh skte hai.
+
+
+1. all_of( start , end+1 , funtion)    ---sare element satisfy hone chahiye than true.
+
+2. any_of( start , end+1 , funtion)    ---atleast one element satisfy hona chahiye than true
+
+3. none_of( start , end+1 , funtion)    ---sare element satisfy nhi hone chahiye than true
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	vector<int> v= {2,-3,4,-5};
+	cout << all_of(v.begin(), v.end(),
+		 [](int x){ return x>0 ;})<<endl;
+
+	cout << any_of(v.begin(), v.end(),
+		[](int x){ return x>0 ;})<<endl;
+
+	cout << none_of(v.begin(), v.end(),
+		[](int x){ return x>0 ;})<<endl;
+  
+}
+
+o/p
+0
+1
+0

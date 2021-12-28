@@ -1,0 +1,100 @@
+Maps in C++  :
+------------------
+Maps has a key-value  pair , in which key is mapped with value.
+ALL KEYS ARE UNIQUE.
+map ka har ek element pair ho hai. elements k bich m links hote 
+hai, BUT ye continous nhi hote hai so 'it++' krte NOT 'it+1' .
+
+Basically hum unodered hi use krte hai jb sorting nhi chahiye hoti hai
+becoz uski complexity km hoti hai.
+
+Maps  are of two types :
+1. ordered maps : thes are sotred in sorted order acc. to keys.
+(in case of string keys -- lexographic order)
+use Tree inside
+
+2.Unorderd map:
+jb order nhi chahiye ho tb esse hi use krte hai.
+ uses hash table inside, Random order.
+isme TC O(1) ho jati hai.
+isme keys , pairs, sets etc nhi bana skte hai.
+funtion same in both but TC O(1) ho jati hai. 
+
+Syntax :
+     
+ unorderd_map < int ,string> m;
+
+for maps:
+------------
+Syntax :
+     
+ map < int ,string> m;
+
+TC of insertion and access is O(logn)
+becoz comparision hoga ki phle se hai ya nhi.
+so TC key pr bhi depend krta hai.
+Insert krne k do tarike hote hai-----
+m[1 ]= "abc";                   //O(logn) for insertion
+m[2]=" cde";
+m[3]="dfd";
+// same key insert krne pr uski corresponding valu change ho jayegi.
+AND
+
+m.insert({4,"xyz"});
+
+Maps k lye bhi iterator ho skte hai.
+Ex:
+map <int,string>:: iterator it;
+
+for( it=m.begin();  it!=it.end();  it++){
+     cout << it-->first <<" "<< it-->second ;
+   //cout << (*it).first <<" "<< (*it).second ;	
+}
+
+OR
+with auto keyword
+
+for(auto &pr : m){
+   cout << pr.first <<" "<<pr.second;
+} 
+
+
+Function:
+------------
+1. m.size() ---. return size of map
+2. m.find(x);    ---input key or iterator dono le skta hai
+	         //check dal de humsa.(it case of iterator)
+	          return iterator if value exit 
+	         otherwise m.end(); return karega
+3. m.clear() -- clear kr dega
+4. m.erase(x);  --delete kr dega keys input lega
+   m.erase(it)  ----iterator bhi leke delete kr dega
+	        //essa iterator doge to exit nhi krta hai to
+		error ayegi isilye
+ if(it != m.end()){      //ye condition check karegi ki wo exit kr rha hai ya nhi, karega tb hi value erase hogi otherwise nh hogi.
+     m.erase(it);
+}
+
+
+example :------------------
+sorted string with their frequency:
+-----------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n;
+	cin >>n;
+	map< string,int> m;
+	for(int i=0;i<n;i++){
+		string s;
+		cin >> s;
+		m[s]++;
+		}
+	for(auto &value: m){
+		cout<<value.first <<" "<<value.second<<endl;
+	}	
+}
+
+		
+

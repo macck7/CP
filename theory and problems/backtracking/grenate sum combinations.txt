@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<vector<int>> subsets;
+void generate(vector<int> &subset,int i, vector<int> &num,int b){
+	if(b<=0||i>=num.size() ){
+		if(b==0 ){
+		subsets.push_back(subset);
+	}
+		return;
+	}
+	subset.push_back(num[i]);
+	generate(subset,i,num,b-num[i]);
+	//generate(subset,i+1,num,b-num[i]);
+	subset.pop_back();
+	generate(subset,i+1,num,b); 
+}	
+
+int main(){
+	int n;
+	cin >>n;
+	vector<int> v(n);
+	for(int i=0;i<n;i++){
+		cin>>v[i];
+	}
+	int b;
+	cin >>b;
+	vector<int> x;
+	sort(v.begin(),v.end());
+	vector<int> current, C;
+    int i,j;
+    	
+    	//storing only distinct elements in list C.
+    for(i=0;i<v.size();i++)
+    {
+    	j=i+1;
+    	while(j<v.size()&&v[i]==v[j]){
+    	    j++;
+    	}
+    	C.push_back(v[i]);
+    	i=j-1;
+    }
+
+	generate(x,0,C,b);
+
+	for(auto subset: subsets){
+		for(auto l : subset){
+			cout <<l<<" ";	
+		}
+		cout <<endl;	
+	}
+
+}
+
+i/p
+4
+7 2 6 5
+16
+
+o/p
+2 2 2 2 2 2 2 2 
+2 2 2 2 2 6 
+2 2 2 5 5 
+2 2 5 7 
+2 2 6 6 
+2 7 7 
+5 5 6 

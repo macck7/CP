@@ -1,0 +1,46 @@
+question link--https://www.hackerearth.com/problem/algorithm/borrow-robo/
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e5+10;
+int hsh[N];                                             //hashing with prices...
+/*
+CONSTRAINTS
+1 = N = 10^5
+1 = A[i] = 10^5
+1 = Q = 10^5
+1 = i = N
+1 = price = 2*10^5
+*/
+int main(){
+	int n;
+	cin >>n;
+	int v[n];
+	for(int i=0;i<n;i++){
+		cin>> v[i];
+		hsh[v[i]]++; //price count
+	}
+
+    int q,price,idx;
+    cin>>q;
+    while(q--){
+        cin>>idx>>price;
+        idx--;
+        if(v[idx]==price) cout<<"0"<<endl;
+        else {
+            hsh[v[idx]]--;                                //1 based indexing
+            if(v[idx]>price){
+               if(hsh[price]==0) cout<<"-1"<<endl;
+               else cout<<hsh[price]<<endl;
+            }
+            else {
+                int extra = price-v[idx];
+                if(hsh[extra]==0 && hsh[price]==0) cout<<"-1"<<endl;
+                else cout<<hsh[extra]+hsh[price]<<endl;
+            }
+            hsh[v[idx]]++;                        //1 based indexing
+
+}
+}}
+
+

@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class tree{
+	public:
+	int d;
+	tree* left;
+	tree* right;
+	tree(int val){
+		d=val;
+		left=NULL;
+		right=NULL;
+	}
+};
+
+tree* insert( tree* root , int data){
+	if(root==NULL){
+		root=new tree(data);
+		return root;
+	}
+	else if( data<= root->d){
+		root->left=insert(root->left,data);
+	}
+	else{
+		root->right=insert(root->right,data);
+	}
+	return root;
+}
+
+bool inorder_travese(tree* root , int num){
+	if(root==NULL){
+		return false;
+	}
+
+	if(root->d == num){
+		return true;
+	}
+	bool left= inorder_travese(root->left,num);
+	if(left) return true;
+
+	bool right= inorder_travese(root->right , num);
+	return right;
+}
+
+
+int main(){
+	int n;
+	cin>>n;
+	tree* root=NULL;
+
+	while(n--){
+		int data;
+		cin>>data;
+		root=insert(root,data);
+	}
+	int q;
+	cin>>q;
+	while(q--){
+		int to_find;
+		cin>>to_find;
+		//cout<<to_find<<endl;;
+		if(inorder_travese(root,to_find)){
+			cout<<"Yes"<<endl;
+		}
+		else{
+			cout<<"No"<<endl;
+		}
+	}
+
+}

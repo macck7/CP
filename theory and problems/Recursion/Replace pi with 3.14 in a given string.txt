@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+void repacepi(string s ,int i){
+   if(i== s.size()){
+      return;
+   }
+   if( s[i]=='p' and s[i+1] =='i'){
+      cout<<3.14;
+      repacepi(s , i+2);
+   }
+   else{
+      cout<<s[i];
+      repacepi(s,i+1);
+   }
+   return;
+}
+
+int main(){
+   string s;
+   cin>>s;
+
+   repacepi(s,0);
+}

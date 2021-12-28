@@ -1,0 +1,170 @@
+1. min_element(start,end+1);
+    min_element(v.begin(),v.end());  -----------return iterator of min element in vector / pointer in array
+
+
+2. max_element(start,end+1)
+    max_element(v.begin(),v.end());  -----------return iterator of max element in vector/pointer in array
+
+
+3. accumulate(start,end+1, initial sum)
+    int sum= accumulate(v.begin(),v.end(),0);   ------. return sum of vector of array (int)  and ek intial sum pass krte hai at last ex. 0
+
+
+5. partial_sum(v.begin(),v.end()) -- i=0 se us element tk ka sum
+
+
+4. count( start,end+1, element ); 
+    auto ct= count( v.begin() , v.end() ,  5 );    ---. return no. of occrance of element passesd  0 if not occured
+
+
+5. find( start,end+1, element ); 
+    auto it= find(v.begin(),v.end(),10);           --------->return iterator of element if found else v.end() next to last element
+
+if(it !=v.end())   cout << *it <<endl;          //can be used to check presence of element
+else
+       cout <<"element not found";
+
+
+6. lower_bound( a.begin() ,a.end() , x)   ---> starting iterator, next to ending iterator, element
+
+lower_bound( a ,a+n , x)   ---> starting address, next to ending, element // gives iterator of  equal to or greater no. than given no.
+
+7. upper_bound( a.begin() ,a.end() , x)   ---> starting iterator, next to ending iterator, element
+
+upper_bound( a ,a+n , x)   ---> starting address, next to ending, element   //// gives iterator of greater no. than given no.
+
+
+8. reverse(start, end+1);
+    reverse(v.begin(), v.end());                     ------->reverse the vector from given address to given address
+
+9. rotate(start, middle, end);
+  ex. rotate(arr, arr+2 , arr+n)   -- rotate array from 2 index element.
+
+10. next_permutation(a.begin(), a.end() ) -- give next lexographic permutation.
+
+
+EX: in string
+	string s="asdfghjkl";
+	reverse(s.begin()+1,s.end());
+	cout <<s<<endl;
+
+
+
+11. std::is_sorted(v.begin(),v.end()) -- check given array is sorted or not
+
+12. partial_sum( ) :This function assigns partial sum of the corresponding elements of an array to every position of the second array.It 			    returns the partial sum of all the set of values lying between [first, last) 
+
+partial_sum(first, last, b);
+partial_sum(first, last, b, myfun);
+
+first, last : first and last element of range 
+              whose elements are to be added
+b : index of array where  corresponding partial 
+    sum will be stored;
+myfun : a user defined function for performing 
+        any specific task
+
+=============================================================================
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	int n;
+	cin >>n;
+	vector<int>v(n);
+	for(int i=0;i<n;i++){
+		cin >> v[i];
+	}
+	auto min= min_element(v.begin(),v.end());
+	cout << *min <<endl;
+
+	auto max= max_element(v.begin(),v.end());
+	cout << *max <<endl;
+
+	auto sum= accumulate(v.begin(),v.end(),0);
+	cout << sum <<endl;
+
+	auto ct= count(v.begin(),v.end(), 5 );
+	cout << ct <<endl;
+
+	auto it= find(v.begin(),v.end(),10);
+	if(it !=v.end())  cout << *it <<endl;
+	else
+		cout <<"element not found"<<endl;
+
+	reverse(v.begin(), v.end());
+	for(auto val : v){
+		cout << val <<" ";
+	}
+	cout<<endl;
+
+	string s="asdfghjkl";
+	reverse(s.begin()+1,s.end());
+	cout <<s<<endl;	
+
+}
+
+i/p
+6
+4
+5
+5
+25
+7
+8
+
+o/p:
+4
+25
+54
+2
+element not found
+8 7 25 5 5 4 
+alkjhgfds
+
+--------------------------------------------------
+in case of ARRAY :
+----------------------------
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	int n;
+	cin >>n;
+	int v[n];
+	for(int i=0;i<n;i++){
+		cin >> v[i];
+	}
+	auto min= min_element(v,v+n);
+	cout << *min <<endl;
+
+	auto max= max_element(v,v+n);
+	cout << *max <<endl;
+
+	auto sum= accumulate(v,v+n,0);
+	cout << sum <<endl;
+
+	auto ct= count(v,v+n, 5 );
+	cout << ct <<endl;
+
+	auto it= find(v,v+n,10);
+	if(it !=v+n)  cout << *it <<endl;
+	else
+		cout <<"element not found"<<endl;
+
+	reverse(v,v+n);
+	for(auto val : v){
+		cout << val <<" ";
+	}
+	cout<<endl;
+
+	string s="asdfghjkl";
+	reverse(s.begin()+1,s.end());
+	cout <<s<<endl;	
+
+}

@@ -1,0 +1,22 @@
+class node{
+	public:
+	int d;
+	node next;
+	node(int val){
+		d=val;
+		next=NULL;
+	}
+};
+
+void display(node &head){
+	if(head==NULL){
+		return;
+	}
+	node temp=head;
+	while(temp!=NULL){
+		couttemp-d ;
+		temp=temp-next;
+		
+	}
+}
+

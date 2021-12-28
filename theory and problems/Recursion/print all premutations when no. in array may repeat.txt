@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector< vector < int  > > ans;
+
+void permutations( vector < int > &a , int idx){
+
+	if(idx == a.size()){
+		ans.push_back(a);   //pushing unique permutations
+		return ;
+	}
+
+	for( int i= idx ; i<a.size() ; i++){
+		if( i!= idx and a[i]== a[idx])
+			continue;
+		permutations( a, idx+1);
+		swap(a[i] , a[idx]);
+	}
+
+	return;
+}
+
+
+int main(){
+	int n;
+	cin>>n;
+	vector < int > a(n);
+
+	for( int i=0; i<n ; i++){
+		cin>>a[i];
+	}
+
+	permutations( a, 0);
+
+	for( auto &x : ans){
+		for( auto &y : x){
+			cout<<y<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}

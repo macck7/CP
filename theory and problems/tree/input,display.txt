@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class tree{
+	public:
+	int d;
+	tree* left;
+	tree* right;
+	tree(int val){
+		d=val;
+		left=NULL;
+		right=NULL;
+	}
+};
+
+tree* insert(tree* root , int data){
+	if(root==NULL){
+		root=new tree(data);
+		return root;
+	}
+	else if(data<= root->d){
+		root->left=insert(root->left,data);
+	}
+	else{
+		root->right= insert(root->right,data);
+	}
+	return root;
+}
+void print_tree_in(tree* root){
+	if(root==NULL){
+		return;
+	}
+	print_tree_in(root->left);
+	cout<<root->d<<" ";
+	print_tree_in(root->right);
+}
+
+void print_tree_pre(tree* root){
+	if(root==NULL){
+		return;
+	}
+	cout<<root->d<<" ";
+	print_tree_pre(root->left);
+	print_tree_pre(root->right);
+}
+
+void print_tree_post(tree* root){
+	if(root==NULL){
+		return;
+	}
+	print_tree_post(root->left);
+	print_tree_post(root->right);
+	cout<<root->d<<" ";
+}
+
+
+int main(){
+	int n;
+	cin>>n;
+	tree* root=NULL;
+	while(n--){
+	int node;
+	cin>>node;
+	
+	root=insert(root,node);
+	}
+	print_tree_in(root);
+	cout<<endl;
+	print_tree_pre(root);
+	cout<<endl;
+	print_tree_post(root);
+}

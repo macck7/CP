@@ -1,0 +1,40 @@
+har element k lye uske left and upper(usko mila k) sum krke save krte hai ((array 1,1 se start krte hai))
+	
+
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N=1e3+10;
+int a[N][N];
+int prefixsum[N][N];
+
+
+int main(){
+	int n;
+	cin >> n;
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+			cin>> a[i][j];
+			prefixsum[i][j]=(prefixsum[i-1][j]+prefixsum[i][j-1])-prefixsum[i-1][j-1]+a[i][j];
+		}
+	}
+	/*
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+
+			cout << prefixsum[i][j]<<" ";
+		}cout <<endl;
+	}
+	*/
+
+	int t;
+	cin >>t;
+	while(t--){
+		int a,b,c,d;
+		cin>>a>>b>>c>>d;
+
+		cout <<prefixsum[c][d]-((prefixsum[c][b-1]+prefixsum[a-1][d])-prefixsum[a-1][b-1])<<endl;
+		
+	}
+	   // O(N) +O(T) = 10^5 + 10^5 =10^5 TC
+}		

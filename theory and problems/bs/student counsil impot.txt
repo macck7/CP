@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+using ll=long long;
+ll k;
+ll nog;  //no. of grops
+
+vector<ll> sizeofgp;
+ll c;
+
+bool good(ll m){              ///it is important funtion
+	ll sum = 0 ;
+	for(int i=0; i<sizeofgp.size() ; i++){
+    	sum+= (m <sizeofgp[i])? m :sizeofgp[i];
+	}
+return sum/k>=m ;
+}
+
+//sum( min(x,ai) ) / k >= mid
+
+int main(){
+	
+	cin>>k>>nog;
+
+	sizeofgp.resize(nog);
+
+	
+	for(int i=0 ; i<nog ; i++){
+		cin>>sizeofgp[i];
+		c+=sizeofgp[i];
+	}
+	
+
+
+	ll l=0,r=(c/k)+1;
+	while(r-l>1){
+		ll mid=(r+l)/2;
+		if(good(mid)){
+			l=mid;
+		}
+		else{
+			r=mid;
+		}
+	}
+
+	cout<<l;
+
+		
+
+
+}

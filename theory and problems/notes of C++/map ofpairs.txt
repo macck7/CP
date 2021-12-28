@@ -1,0 +1,81 @@
+Pairs ko integer k jaise cpmpare kr skte hai.
+
+pair<int,int>p1,p2;
+p1={2,2};
+p2={2,3};
+
+cout <<(p1<p2) ;
+
+//o/p:  1
+
+pair ko access krte hai.
+*(it).first()
+
+*(it).second
+-----------------------------------------------------------------------------------
+
+So agar PAIR ko SET ya MAP k andhr dalte hai so andhr compair hote jate 
+hai and insert hote hai.
+
+EX:
+map<pair<string,string>,vector<int>>m;
+
+//map of pair and vector
+
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+
+	map<pair<string,string>,vector<int> >m;
+	int n;
+	cin >>n;
+	while(n--){
+		string fn,ln;
+		int ct;
+		cin>>fn>>ln>>ct;
+	for(int i=0;i<ct;i++){
+		int x;
+		cin >>x;
+		m[{fn,ln}].push_back(x);
+	}
+
+		}
+		for(auto &pr: m){                                              // agar esse use krte hai to dirstly pr.first krte hai BUT
+						  if  ITERATOR se karenge to *(it).first   OR it->first  USE krte hai
+			auto &fullname=pr.first;
+			auto &list=pr.second;
+			cout<<fullname.first<<" "<<fullname.second<<endl;
+			cout<<list.size()<<endl;
+			for(auto &x: list){
+				cout <<x<<" ";
+			}
+			cout<<endl;
+		}
+	}
+
+	
+i/p-
+3
+a b 4
+1 2 3 4
+c d 2
+1 2
+d f 3
+2 3 4
+
+o/p-
+a b
+4
+1 2 3 4 
+c d
+2
+1 2 
+d f
+3
+2 3 4 
+
+
+		

@@ -1,0 +1,33 @@
+// we take two extra array for precalculation of gcd of all terms ;;;;; see in notes of gcd
+question link ;;;---   https://www.codechef.com/problems/GCDQ
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+	int t;
+	cin >> t;
+	while(t--){
+		int n,q;
+		cin >>n>>q;
+		int a[n+10];
+		int prefordgcd[n+10];
+		int prebackdgcd[n+10];
+		prefordgcd[0]=prebackdgcd[n+1]=0;
+						// because first and last nhi lenge(ignore karenge)
+		for(int i=1;i<=n;i++){
+			cin >> a[i];
+			prefordgcd[i]=__gcd(prefordgcd[i-1],a[i]);	
+		}
+		for(int j=n;j>=1;j--){
+			prebackdgcd[j]=__gcd(prebackdgcd[j+1],a[j]);	
+		}
+		while(q--){
+			int l,r;
+			cin >> l>> r;
+			
+			cout << __gcd(prefordgcd[l-1],prebackdgcd[r+1]) <<endl;
+		}
+	}
+}

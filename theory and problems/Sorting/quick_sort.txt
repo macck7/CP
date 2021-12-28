@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int partition( int arr[] , int l , int r){
+	int p = arr[r];          //last element as pivot
+	int i= l-1;
+	for( int j=l ; j<r ; j++){
+		if( arr[j]<= p){
+			i = i+1 ;
+			swap( arr[i] , arr[j]);
+		}
+	}
+	swap( arr[i+1],arr[r]);
+	return i+1;
+
+}
+
+void quick_sort( int arr[], int l ,int r){
+	
+	if( l<r ){
+		
+		int q = partition( arr ,l ,r);
+
+		quick_sort( arr , l, q-1);
+		quick_sort( arr , q+1 , r);
+	}
+}
+
+
+int main(){
+	int n;
+	cin>>n;
+	int arr[n];
+	for( int i= 0 ; i<n ; i++){
+		cin>>arr[i];
+	}
+
+	quick_sort( arr ,0 , n-1);
+
+	for( auto &a : arr){
+		cout<<a<<" ";
+	}
+}

@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void subsequences( string s ,string ans){
+   if(s.length()==0){
+      cout<<ans<<endl;
+      return;
+   }
+
+   char ch = s[0];
+   string ros=s.substr(1);
+
+   subsequences( ros ,ans);     //ch ko nhi le rhe hai
+   subsequences( ros, ans+ch);  //ch ko le rhe hai
+
+   
+}
+
+int main(){
+   string s;
+   cin>>s;
+   string ans="";
+   subsequences(s,ans);     //ans is use to stroe ans
+}
+
+
+
+C
+B
+BC
+A
+AC
+AB
+ABC

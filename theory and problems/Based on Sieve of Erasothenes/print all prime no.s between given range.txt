@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void prime_in_range( int first ,int last){
+   int arr[ last ] ={ 0 }; //default vale at all index is zero
+
+   
+   for( int i=2 ; i <=last ; i++ ){
+      if( arr[ i] ==0){
+      for( int j = i*i ; j<= last ; j +=i){
+         arr[j]=1;
+         }
+      }
+   }
+
+   for( int i=first ; i<=last ; i++){
+      if(arr[i] !=1){
+         cout<<i<<endl;
+      }
+   }
+}
+
+int main(){
+   int first , last;
+   cin >>first >> last;
+
+   prime_in_range(first,last );
+
+   return 0;
+}

@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void count_sort( int arr[], int n){
+	int k= arr[0];
+
+	for( int i=0 ;i<n ; i++){
+		k =max(k,arr[i]);
+	}
+	int count[6]={0};  //no. of elements reapeating in aray
+
+	for( int i=0 ; i<n ; i++){
+		count[arr[i]]++;
+	}
+	for( int i=1; i<=k ; i++){
+		count[i] += count[i-1]; //position array 
+	}
+	
+	int ans_arr[n];
+
+	for( int i=n-1 ;i>=0 ;i--){
+		ans_arr[--count[arr[i]]]=arr[i];
+		
+	}
+	for(int i=0 ; i<n ;i++){
+		arr[i] = ans_arr[i];
+	}
+}
+
+
+
+int main(){
+	int n =20;
+
+	int arr[] ={0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 1, 2, 1, 0, 1, 2, 5, 5, 5, 5};
+	for( int i= 0 ; i<n ; i++){
+		cin>>arr[i];
+	}
+
+
+
+	count_sort( arr,n);
+
+	for( auto &a : arr){
+		cout<<a<<" ";
+	}
+}

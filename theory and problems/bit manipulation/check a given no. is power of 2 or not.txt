@@ -1,0 +1,29 @@
+BIT MANIPULATION
+numers which are power of two in that no.s 
+
+(n & n-1) = 0
+see in notes ----
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool check( int n){
+
+    return (n && !( n & (n-1)));      // n se && islye kiya becoz 
+                             		 // if n=0 so ,n-1 nhi hoga uske liye..
+                             		 // && phle n check karega so, 0 && anything false...
+}
+
+
+ int main(){
+    int n;
+    cin>>n ;
+
+    cout<<check(n);
+
+ }
+
+
+
+

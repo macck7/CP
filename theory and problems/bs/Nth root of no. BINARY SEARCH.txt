@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+double eps=1e-6; // for precion decimal places
+
+double mutiply(double a,int b){
+	double ans=1;
+	for(int i=0;i<b;i++){
+		ans*=a;
+	}
+	return ans;
+}
+int main(){
+	double n;
+	int times;
+	cin>>n>>times;
+	double lo=1,hi=n;
+	double mid;
+
+	while(hi-lo>eps){
+		mid=(lo+hi)/2;
+		if(mutiply(mid,times)<n){
+			lo=mid;
+		}
+		else {
+			hi=mid;
+		}
+	}
+	// print low,hi,mid sb same result denge
+	cout<<lo;
+}

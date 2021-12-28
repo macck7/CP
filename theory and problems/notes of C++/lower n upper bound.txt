@@ -1,0 +1,120 @@
+IT works on array,vector,set,map,pair
+
+works on array and vector in O(logn)        // inside Binary search
+
+
+phle se sorted hone chahiye  --TC O(logn)   //SOO PHLE SORT KRLE with sort funtion.
+agar sorted nhi hai to TC O(n)
+
+if louwer bound find krna hai 
+to agar element present hai to wahi return kr dega otherwise us elemnt se next bada
+element dega.
+
+if upper bound find krna hai to usse bada next bada element represent karga
+
+agar nhi hoga to next to last element deta hai
+so check laga denge
+
+auto ptr=lower_bound( a ,a+n , x)
+if( ptr ==(a+n)){ cout <<"not found"}         // array
+
+auto ptr=lower_bound( a.begin ,a.end() , x)
+if( ptr ==a.end()){ cout <<"not found"}               //vector
+
+Multiple values k case m first wala return krta h.
+-----------------------------------------------------------------------------------------------------------------------
+
+dono funtion pointer( in case of array) ya phit iterator (in case of vector) return krte hai
+
+we can nalso use COMP funtion inside bound funtions.
+
+Syntax :
+lower_bound( a.begin() ,a.end() , x)   ---> starting iterator, next to ending iterator, element
+
+lower_bound( a ,a+n , x)   ---> starting address, next to ending, element
+
+upper_bound( a.begin() ,a.end() , x)   ---> starting iterator, next to ending iterator, element
+
+upper_bound( a ,a+n , x)   ---> starting address, next to ending, element
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	int n;
+	cin >>n;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin >>a[i];
+	}
+	sort(a,a+n);
+	for(int i=0;i<n;i++){
+		cout <<a[i]<<" ";
+	}
+	cout <<endl;
+	//int *ptr = lower_bound(a,a+n,20);
+	int *ptr = upper_bound(a,a+n,20);
+	if(ptr == (a+n)){
+		cout <<"not found";
+		return 0;
+	}
+	cout <<(*ptr) <<endl;
+	
+
+}
+
+i/p:
+6
+4
+5
+5
+25
+7
+8
+
+o/p
+4 5 5 7 8 25 
+25
+
+==============================================================
+
+Agar set and map  me use karenge to TC O(n) hogi, soo TLE error aa skta hai to na use kre
+
+inside tree use krta h (set n maps m)
+
+so set  k case m 
+
+s.lower_bound(x);              //iski TC O(log n )  hogi
+
+
+IN maps key pr work krta hai   aur iterator return krta hai.
+ierator return karega
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+	int n;
+	cin >>n;
+	set<int>s;
+	for(int i=0;i<(int)(1e6);i++){
+		s.insert(rand());
+	}
+
+	for(int i=0;i<(int)(1e5);i++){
+	//auto it = upper_bound(s.begin(),s.end(),rand());       --> use nhi karenge
+
+	auto it=s.lower_bound(rand()) ;              ------> use karege
+	}
+
+	
+
+}

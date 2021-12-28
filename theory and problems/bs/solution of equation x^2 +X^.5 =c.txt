@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+double eps1=1e-6;
+double eps2=1e-15;
+
+int good( double val,double C){
+	double term = val * val + sqrt(val);
+    if(abs(term - C) < eps1) return 0;
+    if(term > C) return -1;
+    return 1;
+}
+
+int main(){
+	double C;
+	cin>>C;
+
+	double l=0.0;
+	double r=1e10;
+	double ans =-1.0;
+
+
+	while(r-l> eps2){
+		double m =(r+l)/2;
+		int status=good(m,C);
+
+		if(!status){
+			ans=m;
+			break;
+		}
+		else if(status==1){
+			l=m;
+		}else{
+			r=m;
+		}
+	}
+	cout<<fixed<<setprecision(17);
+	cout<<ans<<"\n";
+
+
+}

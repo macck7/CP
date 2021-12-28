@@ -1,0 +1,50 @@
+SET are same as maps without key value pair only Value.
+UNIQUE ELEMENTS
+
+there are 3 types of sets.
+1. ordered sets : values are stored in sorted order.
+     tree  use hota hai inside.
+     sare funtions ki TC O(1ogn)
+Synatax:  set <string > s;
+                s.insert("abc")   ---->O(log(n))
+
+2. unorder_set : values are sorted in random order.
+  hash table use hota hai inside
+     sare funtions ki TC O(1)
+Synatax:  unordered_set <string > s;
+
+3. multiset : duplicate allowed in multiset.
+      tree use hota hai inside
+      sare funtions ki TC O(logn)
+Syntax : multiset< string> s;
+
+s.find(x)  ---. return itertor of first value in case of multiset.
+
+s.erase(it);  -----agar iterator pass karenge to FIRST occurance delete karega
+s.erase(x);  ---- agar value pass karenge to sari occurance  delete krga
+s.count(x)   ---- count occurance of x
+
+Function for both:
+----------------------
+1. s.insert();
+2.s.begin()
+3.s.end()
+4. s.find();  //check dal de humsa.(in case of iterator)
+	if(s.find(x)= s.end()){         //isk mtlb x s me nhi hai
+ 	cout <<"not in set"
+	}
+	else cout <<"present is set";
+
+                  
+5. s.erase(); // check krle hai ki nhi(in case of iterator)
+	if(it != s.end()){         //s.end() mtlb value present nhi h
+ 	//find or erase funtion
+	}
+
+6. s.count(x)  ---> return occurance of x  //important it can be used to check x is present in set or not.
+
+ACCESSING LAST ELEMRET:
+
+auto ans= s.end();
+ans--;
+cout <<*ans;

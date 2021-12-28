@@ -1,0 +1,19 @@
+	int n;
+	cin>>n;
+	node* head=NULL;
+	node* tail=NULL;
+	
+	for( int i=0 ; i<n ; ++i){
+		int num;
+		cin>>num;
+		node* temp = new node(num);
+		if(head==NULL){
+			head=temp;
+			tail=temp;
+		}
+		else{
+			tail->next=temp;
+			tail=temp;
+		}
+	}
+}
