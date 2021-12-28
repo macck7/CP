@@ -1,2 +1,1 @@
-# competive-programming
 # CP
